@@ -16,7 +16,7 @@ export const PeoplePage = () => {
   return (
     <ul>
       {data?.results.map((character) => (
-        <li>
+        <li key={character.name}>
           <h2>{character.name}</h2>
         </li>
       ))}

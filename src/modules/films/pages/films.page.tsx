@@ -16,7 +16,7 @@ export const FilmsPage = () => {
   return (
     <ul>
       {data?.results.map((film) => (
-        <li>
+        <li key={film.title}>
           <h2>{film.title}</h2>
           <p>{film.opening_crawl}</p>
         </li>
