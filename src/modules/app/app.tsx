@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import { Navbar } from "../common/components/navbar/navbar.component"
 import { FilmsPage } from "../films/pages/films.page"
 import { PeoplePage } from "../people/pages/people.page"
 import { PlanetsPage } from "../planets/pages/planets.page"
@@ -6,6 +7,8 @@ import { PlanetsPage } from "../planets/pages/planets.page"
 export const App = () => {
   return (
     <main>
+      <Navbar />
+      
       <Routes>
         <Route path="films" element={<FilmsPage />} />
         <Route path="people" element={<PeoplePage />} />
