@@ -1,19 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { useGetFilms } from "../../../films/services/films.api";
+import {
+  StyledNav,
+  StyledNavItem,
+  StyledNavItems,
+  StyledNavLink,
+  StyledNavLinkCount,
+  StyledNavLinkName,
+} from "./navbar.styles";
 
 export const Navbar = () => {
+  const films = useGetFilms();
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="films">Films</NavLink>
-        </li>
-        <li>
-          <NavLink to="people">People</NavLink>
-        </li>
-        <li>
-          <NavLink to="planets">Planets</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <StyledNav>
+      <StyledNavItems>
+        <StyledNavItem>
+          <StyledNavLink to="films">
+            <StyledNavLinkName>Films</StyledNavLinkName>
+            <StyledNavLinkCount>{films.data?.count}</StyledNavLinkCount>
+          </StyledNavLink>
+        </StyledNavItem>
+        <StyledNavItem>
+          <StyledNavLink to="people">People</StyledNavLink>
+        </StyledNavItem>
+        <StyledNavItem>
+          <StyledNavLink to="planets">Planets</StyledNavLink>
+        </StyledNavItem>
+      </StyledNavItems>
+    </StyledNav>
   );
 };

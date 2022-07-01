@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { swapi } from "../../../services/api/swapi.client";
 
 const QUERY_KEYS = {
@@ -17,9 +17,16 @@ interface Film {
   opening_crawl: string;
 }
 
-export const useGetFilms = () => {
-  return useQuery(QUERY_KEYS.ALL, async () => {
-    const { data } = await swapi.get<PaginatedResponse<Film>>("/films");
-    return data;
-  });
+const getFilms = async () => {
+  const { data } = await swapi.get<PaginatedResponse<Film>>("/films");
+  return data;
 };
+
+export const useGetFilms = () => {
+  return useQuery(QUERY_KEYS.ALL, getFilms);
+};
+
+export const usePrefetchFilms = async () => {
+  const queryClient = useQueryClient();
+  await queryClient.prefetchQuery(QUERY_KEYS.ALL, getFilms)
+}
