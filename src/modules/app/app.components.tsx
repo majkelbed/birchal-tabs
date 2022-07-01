@@ -3,12 +3,14 @@ import { Navbar } from "../common/components/navbar/navbar.component";
 import { FilmsPage } from "../films/pages/films.page";
 import { usePrefetchFilms } from "../films/services/films.api";
 import { PeoplePage } from "../people/pages/people.page";
+import { usePrefetchPeople } from "../people/services/people.api";
 import { PlanetsPage } from "../planets/pages/planets.page";
 import { GlobalStyle } from "./app.styles";
 
 export const App = () => {
   // TODO: custom hook to populate all tabs at once
   usePrefetchFilms();
+  usePrefetchPeople();
     
   return (
     <main>

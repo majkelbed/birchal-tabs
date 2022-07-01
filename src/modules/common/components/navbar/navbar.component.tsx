@@ -1,4 +1,5 @@
 import { useGetFilms } from "../../../films/services/films.api";
+import { useGetPeople } from "../../../people/services/people.api";
 import {
   StyledNav,
   StyledNavItem,
@@ -10,6 +11,7 @@ import {
 
 export const Navbar = () => {
   const films = useGetFilms();
+  const people = useGetPeople();
 
   return (
     <StyledNav>
@@ -21,10 +23,16 @@ export const Navbar = () => {
           </StyledNavLink>
         </StyledNavItem>
         <StyledNavItem>
-          <StyledNavLink to="people">People</StyledNavLink>
+          <StyledNavLink to="people">
+            <StyledNavLinkName>People</StyledNavLinkName>
+            <StyledNavLinkCount>{people.data?.count}</StyledNavLinkCount>
+          </StyledNavLink>
         </StyledNavItem>
         <StyledNavItem>
-          <StyledNavLink to="planets">Planets</StyledNavLink>
+          <StyledNavLink to="planets">
+            <StyledNavLinkName>Planets</StyledNavLinkName>
+            <StyledNavLinkCount>asd</StyledNavLinkCount>
+          </StyledNavLink>
         </StyledNavItem>
       </StyledNavItems>
     </StyledNav>
